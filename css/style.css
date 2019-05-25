@@ -44,6 +44,7 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 .imgBox img{width: 100%; }
 /*.bgFixed{height: 100%; overflow: hidden; }*/
 .displayN{display: none !important; }
+.reverse{transform: rotate(180deg); }
 
 @keyframes chevronAnimation {
 	0% {transform: translate(0, 0) scale(1.0, 1.0);}
