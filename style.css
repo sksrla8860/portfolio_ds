@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+html,body {margin: 0;padding: 0; }
+html,body *{box-sizing: border-box;font-size: 10px; }
+.clearfix:after{content: ''; display: block; clear: both; }
+#logo {position: fixed;display: block;z-index: 9999;top: 20px; left: 20px; }
+body {background: #06416B;color: #d7e7f3;font-family: 'BMHANNAAir';line-height: 33px;text-align: center;text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);}
+/*#contents{width: 100%; height: 100%;}*/
+/*.main {padding-top: 150px; }*/
+.letter-changer {line-height: 35px;}
+.letter-changer:after {content: "!!!";animation: changeLetter 2.0s linear infinite alternate;font-size: 5.5rem;}
+@keyframes changeLetter {
+	0% {content: "Designer";}
+	50% {color: rgba(0, 0, 0.0.1);}
+	100% {content: "Publisher";}
+}
+h1 {width: 100%; font-size: 10rem;font-weight: 200;letter-spacing: 1px;text-transform: uppercase;line-height: 1.2; margin-bottom: 20px;}
+h2 {font-weight: 300;font-size: 3.5rem;line-height: 1.5; color: #779dba;margin: 0 auto; margin-bottom: 50px; }
+h3 {font-weight: 500;font-size: 2rem;line-height: 1.5; color: #d7e7f3;margin: 0 auto;}
+strong{font-size: 2rem;}
+section.block {width: 100%; height: 100vh; display: flex; align-items: center; }
+section > div {width: 1280px; height: auto; margin: 0 auto;position: relative; }
+svg {position: fixed;bottom: 50px;width: 30px;animation: chevronAnimation 4s ease-in-out 0s infinite; margin-left: -15px; }
+svg path {fill: #7e9aae;}
+section.block:nth-child(1n) {background: #061c2d;}
+section.block:nth-child(2n) {background: hsl(205, 84%, 14%);}
+section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
+
+/*  호버 이벤트  */
+.hoverEvent{}
+.hoverEvent > figure{overflow: hidden; display: flex; align-items: center; height: 0 !important; padding: 30% 0;}
+
+
+/*  사진관  */
+.graphic{width: 100%; height: 100%; }
+.graphic:after{content: ''; display: block; clear: both; }
+.graphic > div{float: left; width: 50%; height: auto; padding: 0 10%; }
+.graphic img{width: 100%; cursor: pointer; }
+.graphic img:hover{	opacity: 0.3;-webkit-filter: grayscale(100%);filter: grayscale(100%);}
+.layerBG{width: 100%; height: 100%; position: fixed; background-color: rgba(0, 0, 0, .5); top: 0; left: 0; z-index: 5000; }
+.layerPopup{width: 800px; height: 90vh; position: absolute; top: 5%; background-color: #fff; left: 50%; margin-left: -400px; border-radius: 20px; padding: 1.5%; }
+.layerPopup > button{font-size: 4rem; font-weight: bold; border: 0; background-color: #000; color: #fff; width: 50px; height: 50px;  position: absolute; right: 10px; top:8px; border-radius: 50%; cursor: pointer; }
+.imgBox{height: 100%; width: 100%; overflow-y: auto; }
+.imgBox img{width: 100%; }
+/*.bgFixed{height: 100%; overflow: hidden; }*/
+.displayN{display: none !important; }
+.reverse{transform: rotate(180deg); }
+
+@keyframes chevronAnimation {
+	0% {transform: translate(0, 0) scale(1.0, 1.0);}
+50% {transform: translate(0, 5px) scale(0.8, 0.8);}
+100% {transform: translate(0, 0) scale(1.0, 1.0);}
+}
+.skills {width: 33%; float: left; margin: 0 auto; margin-bottom: 50px;}
+/*.skills .bar {width: 100%; height: 100%; }*/
+.skills .bar .chart {position: relative;margin: 0 auto;font-size: 3rem;line-height: 125px;text-align: center; margin-bottom: 20px;}
+.skills .bar canvas {position: absolute;top: 50%; margin-top: -65px; left: 50%; margin-left: -65px;}
+.profile {border: 1.5px solid #779dba;width: 80%;margin: 0 auto;overflow: hidden; padding: 5%; }
+.article {float: left;text-align: left; display: block;clear: left; margin-bottom: 30px;}
+.article h2 {font-size: 2rem;line-height: 1.5; margin-bottom: 0; }
+.article2 {display: inline-block;align-items: center}
+
+@media screen and (max-width:1200px) {
+	html, body{font-size: 9px; }
+	section > div {width: 100%;}
+	.article2 {display: block; }
+}
+@media screen and (max-width:800px) {
+	html, body{font-size: 8px; }
+	section.block{width: 100%; height: 100vh; padding: 0; }
+	.profile {width: 90%; }
+.graphic > div{float: left; width: 50%; height: auto; padding: 0 5%; }
+	.article {margin-bottom: 10px;}
+	.mouseover{display: block !important; }
+	.hoverEvent{width: 70% !important; float: none !important; margin: 0 auto; }
+	.hoverEvent > figure{height: 0 !important; padding: 30% 0; }
+	/*.article {padding-left: 10%;}*/
+.layerPopup{width: 95%; height: 90%; position: absolute; top: 5%; background-color: #fff; left: 2.5%; margin: 0; }
+}
+
+@media screen and (max-width:480px) {
+	html, body{font-size: 8px; }
+	.skills .bar .chart{line-height: 50px;}
+	.skills .bar canvas {top: 50%; margin-top: -35px; left: 50%; margin-left: -35px; }
+}

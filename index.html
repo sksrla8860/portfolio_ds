@@ -11,21 +11,18 @@
 	<link href="css/scroll_trigger.css" rel="stylesheet">
 	<link href="css/mouseover_effect.css" rel="stylesheet">
 	<link href="css/graphic.css" rel="stylesheet">
-	<link href="/fullPage.js-master/dist/fullpage.min.css" rel="stylesheet">
-
 
 	<script src="script/jquery-3.4.0.js"></script>
 	<script src="script/script.js"></script>
-	<script src="/fullPage.js-master/dist/fullpage.min.js"></script>
 </head>
 
 <body>
+    <a href="C:/Users/잘살자2/Desktop/작업/웹퍼블리셔 포폴/190423_포폴/index.html" id="logo">
+        <img src="img/logo2.png" alt="logo">
+    </a>
 	<div id="fullpage">
 <!--첫번째-->
-		<div class="block section">
-		<a href="C:/Users/잘살자2/Desktop/작업/웹퍼블리셔 포폴/190423_포폴/index.html" id="logo">
-			<img src="img/logo2.png" alt="logo">
-		</a>
+		<section class="block section sectionF">
 			<div>
 				<div class="main">
 					<h1 data-scroll="toggle(.scaleUpIn, .scaleUpOut)">
@@ -34,10 +31,10 @@
 				</div>
 				<h2 data-scroll="toggle(.fromBottomIn, .fromBottomOut)">This is Jeong Dong Seob portfolio page.</h2>
 			</div>
-		</div>
+		</section>
 <!--첫번째-->
 		<!--두번째-->
-		<div class="block section">
+		<section class="block section">
 			<div>
 				<h1 data-scroll="toggle(.fromTopIn, .fromTopOut)">Ability</h1>
 				<h2 data-scroll="toggle(.fromBottomIn, .fromBottomOut)" class="clearfix">
@@ -79,10 +76,10 @@
 					</div>
 				</h2>
 			</div>
-		</div>
+		</section>
 <!--두번째-->
 		<!--세번째-->
-		<div class="block section">
+		<section class="block section">
 			<div>
 				<h1 data-scroll="toggle(.scaleDownIn, .scaleDownOut)">Mouseover Effect</h1>
 				<h2 data-scroll="toggle(.fromBottomIn, .fromBottomOut)">Interaction of Mouseover Image</h2>
@@ -130,10 +127,10 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 <!--세번째-->
 		<!--네번째-->
-		<div class="block section">
+		<section class="block section">
 			<div>
 				<h1 data-scroll="toggle(.fromRightIn, .fromRightOut)">Graphic Design</h1>
 				<h2 data-scroll="toggle(.fromLeftIn, .fromLeftOut)">Graphics Design Using Photoshop, Illustratior</h2>
@@ -148,10 +145,10 @@
 					</div>
 				</div>
 			</div>
-		</div>		
+		</section>		
 <!--네번째-->
 		<!--다섯번째-->
-		<div class="block about section">
+		<section class="block about section">
 			<div>
 				<h1 data-scroll="toggle(.fromRightIn, .fromRightOut)">About me</h1>
 				<h2 data-scroll="toggle(.fromLeftIn, .fromLeftOut)"></h2>
@@ -187,15 +184,13 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<svg viewBox="0 0 60 60">
-			<path d="M52.254 18.327c0.816-0.804 2.127-0.804 2.937 0s0.813 2.103 0 2.907l-23.724 23.49c-0.81 0.804-2.121 0.804-2.937 0l-23.724-23.49c-0.81-0.804-0.81-2.103 0-2.907 0.813-0.804 2.127-0.804 2.937 0l22.257 21.423 22.254-21.423z"></path>
-		</svg>
+		</section>
 	</div>
+    <svg viewBox="0 0 60 60">
+        <path d="M52.254 18.327c0.816-0.804 2.127-0.804 2.937 0s0.813 2.103 0 2.907l-23.724 23.49c-0.81 0.804-2.121 0.804-2.937 0l-23.724-23.49c-0.81-0.804-0.81-2.103 0-2.907 0.813-0.804 2.127-0.804 2.937 0l22.257 21.423 22.254-21.423z"></path>
+    </svg>
 	<script type="text/javascript">
-		/*$(function(){
-		})*/
-		
+      
 $(function(){
 	var ww = $(window).width();
 	var wh = $(window).height();
@@ -229,7 +224,7 @@ $(function(){
 		$('html, body').css({'height':'auto', 'overflow': 'auto; '});
 		$('.layerBG').fadeOut(600);
 	});
-	
+	/*
 			$('#fullpage').fullpage({
 				//options here
 				autoScrolling:true,
@@ -237,7 +232,39 @@ $(function(){
 			});
 
 			//methods
-			$.fn.fullpage.setAllowScrolling(false);
+			$.fn.fullpage.setAllowScrolling(false);*/
+  /*  휠 부분  */
+  var scrollEvent = false;
+  var count = 0;
+  
+  $('html, body').on('mousewheel', function(c){
+    c.preventDefault();
+    var m = c.originalEvent.wheelDelta;
+    var sb = $('.sectionF').height();
+    
+    if(m > 0 && scrollEvent == false && count >= 1){
+      console.log(count);
+      scrollEvent = true;
+      count--;
+      $('html, body').stop().animate({scrollTop: sb*count}, {
+        duration: 600, complete: function(){
+          scrollEvent = false;
+        }
+      })
+    }else if(m < 0 && scrollEvent == false && count < 4){
+      console.log(count);
+      scrollEvent = true;
+      count++;
+      if(count == 4){
+        $('svg').addClass('reverse');
+      }
+      $('html, body').stop().animate({scrollTop: sb * count}, {
+        duration: 600, complete: function(){
+          scrollEvent = false;
+        }
+      })
+    }
+  })
 });
 	</script>
 </body>
