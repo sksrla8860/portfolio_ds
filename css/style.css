@@ -42,7 +42,7 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 .layerPopup > button{font-size: 4rem; font-weight: bold; border: 0; background-color: #000; color: #fff; width: 50px; height: 50px;  position: absolute; right: 10px; top:8px; border-radius: 50%; cursor: pointer; }
 .imgBox{height: 100%; width: 100%; overflow-y: auto; }
 .imgBox img{width: 100%; }
-/*.bgFixed{height: 100%; overflow: hidden; }*/
+.bgFixed{height: 100%; overflow: hidden; }
 .displayN{display: none !important; }
 .reverse{transform: rotate(180deg); }
 
