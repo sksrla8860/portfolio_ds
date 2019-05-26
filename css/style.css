@@ -79,7 +79,7 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 	.hoverEvent{width: 70% !important; float: none !important; margin: 0 auto; }
 	.hoverEvent > figure{height: 0 !important; padding: 30% 0; }
 	/*.article {padding-left: 10%;}*/
-.layerPopup{width: 95%; height: 90%; position: absolute; top: 5%; background-color: #fff; left: 2.5%; margin: 0; }
+.layerPopup{width: 95%; height: 90%;top: 5%; background-color: #fff; left: 2.5%; margin: 0; }
 }
 
 @media screen and (max-width:480px) {
