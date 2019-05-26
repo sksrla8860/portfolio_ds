@@ -61,12 +61,14 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 .article2 {display: inline-block;align-items: center}
 
 @media screen and (max-width:1200px) {
+	h1 {xfont-size: 9rem; margin-bottom: 20px;}
 	.graphic > div{padding: 0 15%; }
 	html, body{font-size: 9px; }
 	section > div {width: 100%;}
 	.article2 {display: block; }
 }
 @media screen and (max-width:800px) {
+	h1 {xfont-size: 8rem; margin-bottom: 15px;}
 	html, body{font-size: 8px; }
 	.graphic > div{padding: 0 10%; }
 	section.block{width: 100%; height: 100vh; padding: 0; }
@@ -81,6 +83,7 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 }
 
 @media screen and (max-width:480px) {
+	h1 {xfont-size: 7rem; margin-bottom: 10px;}
 	html, body{font-size: 8px; }
 	.skills .bar .chart{line-height: 50px;}
 	.skills .bar canvas {top: 50%; margin-top: -35px; left: 50%; margin-left: -35px; }
