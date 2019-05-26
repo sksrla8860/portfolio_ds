@@ -34,9 +34,9 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 /*  사진관  */
 .graphic{width: 100%; height: 100%; }
 .graphic:after{content: ''; display: block; clear: both; }
-.graphic > div{float: left; width: 50%; height: auto; padding: 0 10%; }
+.graphic > div{float: left; width: 50%; height: auto; padding: 0 13%; }
 .graphic img{width: 100%; cursor: pointer; }
-.graphic img:hover{	opacity: 0.3;-webkit-filter: grayscale(100%);filter: grayscale(100%);}
+.graphic img:hover{ opacity: 0.3;-webkit-filter: grayscale(100%);filter: grayscale(100%);}
 .layerBG{width: 100%; height: 100%; position: fixed; background-color: rgba(0, 0, 0, .5); top: 0; left: 0; z-index: 5000; }
 .layerPopup{width: 800px; height: 90vh; position: absolute; top: 5%; background-color: #fff; left: 50%; margin-left: -400px; border-radius: 20px; padding: 1.5%; }
 .layerPopup > button{font-size: 4rem; font-weight: bold; border: 0; background-color: #000; color: #fff; width: 50px; height: 50px;  position: absolute; right: 10px; top:8px; border-radius: 50%; cursor: pointer; }
@@ -61,15 +61,17 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 .article2 {display: inline-block;align-items: center}
 
 @media screen and (max-width:1200px) {
+	.graphic > div{padding: 0 15%; }
 	html, body{font-size: 9px; }
 	section > div {width: 100%;}
 	.article2 {display: block; }
 }
 @media screen and (max-width:800px) {
 	html, body{font-size: 8px; }
+	.graphic > div{padding: 0 10%; }
 	section.block{width: 100%; height: 100vh; padding: 0; }
 	.profile {width: 90%; }
-.graphic > div{float: left; width: 50%; height: auto; padding: 0 5%; }
+	.graphic > div{float: left; width: 50%; height: auto; padding: 0 5%; }
 	.article {margin-bottom: 10px;}
 	.mouseover{display: block !important; }
 	.hoverEvent{width: 70% !important; float: none !important; margin: 0 auto; }
