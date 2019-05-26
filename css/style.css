@@ -61,7 +61,7 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 .article2 {display: inline-block;align-items: center}
 
 @media screen and (max-width:1200px) {
-	h1 {xfont-size: 9rem; margin-bottom: 20px;}
+	h1 {font-size: 9rem; margin-bottom: 20px;}
 	.graphic > div{padding: 0 15%; }
 	html, body{font-size: 9px; }
 	section > div {width: 100%;}
