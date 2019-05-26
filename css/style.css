@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-html,body {margin: 0;padding: 0; /*overflow: hidden !important;*/}
+html,body {margin: 0;padding: 0; overflow-x: hidden !important;}
 html,body *{box-sizing: border-box;font-size: 10px; }
 .clearfix:after{content: ''; display: block; clear: both; }
 #logo {position: fixed;display: block;z-index: 9999;top: 20px; left: 20px; }
