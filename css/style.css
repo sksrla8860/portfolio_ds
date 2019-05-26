@@ -61,16 +61,16 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 .article2 {display: inline-block;align-items: center}
 
 @media screen and (max-width:1200px) {
+	html, body{font-size: 9px; }
 	h1 {font-size: 9rem; margin-bottom: 20px;}
 	.graphic > div{padding: 0 15%; }
-	html, body{font-size: 9px; }
 	section > div {width: 100%;}
 	.article2 {display: block; }
 }
 @media screen and (max-width:800px) {
+	html, body{font-size: 8px; }
 	h1 {width:98%; font-size: 7rem; margin-bottom: 15px;}
 h2{font-size: 3rem;}
-	html, body{font-size: 8px; }
 	.graphic > div{padding: 0 10%; }
 	section.block{width: 100%; height: 100vh; padding: 0; }
 	.profile {width: 90%; }
@@ -84,9 +84,9 @@ h2{font-size: 3rem;}
 }
 
 @media screen and (max-width:480px) {
+html, body{font-size: 8px; }
 	h1 {width: 98%;font-size: 4.5rem; margin-bottom: 10px;}
 	h2{font-size: 2.5rem; }
-html, body{font-size: 8px; }
 	.skills .bar .chart{line-height: 50px;}
 	.skills .bar canvas {top: 50%; margin-top: -35px; left: 50%; margin-left: -35px; }
 }
