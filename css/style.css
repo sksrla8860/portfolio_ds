@@ -83,7 +83,7 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 }
 
 @media screen and (max-width:480px) {
-	h1 {xfont-size: 5rem; margin-bottom: 10px;}
+	h1 {font-size: 5rem; margin-bottom: 10px;}
 	html, body{font-size: 8px; }
 	.skills .bar .chart{line-height: 50px;}
 	.skills .bar canvas {top: 50%; margin-top: -35px; left: 50%; margin-left: -35px; }
