@@ -7,14 +7,16 @@
 	<title>포트폴리오의 정동섭입니다.</title>
 
 	<link rel="shortcut icon" href="/logo.png" />
-	<link href="css/reset.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-	<link href="css/scroll_trigger.css" rel="stylesheet">
-	<link href="css/mouseover_effect.css" rel="stylesheet">
-	<link href="css/graphic.css" rel="stylesheet">
+	<link href="css/reset.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+	<link href="css/scroll_trigger.css" rel="stylesheet" />
+	<link href="css/mouseover_effect.css" rel="stylesheet" />
 
-	<script src="script/jquery-3.4.0.js"></script>
-	<script src="script/script.js"></script>
+	<!--<script src="script/jquery-3.4.0.js"></script>-->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="/script/script.js"></script>
+	<!--<script src="/fullPage.js-master/dist/fullpage.js"></script>-->
+	<!--<script src="/script/custom.js"></script>-->
 </head>
 
 <body>
@@ -25,7 +27,7 @@
 <!--첫번째-->
 		<section class="block section sectionF">
 			<div>
-				<div class="main">
+				<div class="main block">
 					<h1 data-scroll="toggle(.scaleUpIn, .scaleUpOut)">
 						Web<div class="letter-changer"></div>
 					</h1>
@@ -36,7 +38,7 @@
 <!--첫번째-->
 		<!--두번째-->
 		<section class="block section">
-			<div>
+			<div class="block">
 				<h1 data-scroll="toggle(.fromTopIn, .fromTopOut)">Ability</h1>
 				<h2 data-scroll="toggle(.fromBottomIn, .fromBottomOut)" class="clearfix">
 					<div class="skills">
@@ -81,7 +83,7 @@
 <!--두번째-->
 		<!--세번째-->
 		<section class="block section">
-			<div>
+			<div class="block">
 				<h1 data-scroll="toggle(.scaleDownIn, .scaleDownOut)">Mouseover Effect</h1>
 				<h2 data-scroll="toggle(.fromBottomIn, .fromBottomOut)">Interaction of Mouseover Image</h2>
 				<div class="mouseover">
@@ -132,14 +134,14 @@
 <!--세번째-->
 		<!--네번째-->
 		<section class="block section">
-			<div>
+			<div class="block">
 				<h1 data-scroll="toggle(.fromRightIn, .fromRightOut)">Graphic Design</h1>
 				<h2 data-scroll="toggle(.fromLeftIn, .fromLeftOut)">Graphics Design Using Photoshop, Illustratior</h2>
 				<div class="graphic">
 					<div class="graphic1"><img src="img/studio.jpg" alt="graphic1"></div>
 					<div class="graphic1"><img src="img/studio.jpg" alt="graphic1"></div>
 				</div>
-				<div class="layerBG displayN">
+				<div class="layerBG" style="display: none; ">
 					<div class="layerPopup">
 						<div class="imgBox"></div>
 						<button type="button" class="closeBtn">X</button>
@@ -150,7 +152,7 @@
 <!--네번째-->
 		<!--다섯번째-->
 		<section class="block about section">
-			<div>
+			<div class="block">
 				<h1 data-scroll="toggle(.fromRightIn, .fromRightOut)">About me</h1>
 				<h2 data-scroll="toggle(.fromLeftIn, .fromLeftOut)"></h2>
 				<div class="profile">
@@ -208,7 +210,7 @@ $(function(){
 			size: 70,
 			barColor: '#FF3636',
 			scaleColor: false,
-			lineWidth: 10,
+			lineWidth: 5,
 			trackColor: '#fff'
 		});
 	}
@@ -216,26 +218,33 @@ $(function(){
 	$('.graphic img').on('click', function(){
 		var imgTag = $(this).parent().html();
 		$('.imgBox').append(imgTag);
-		$('html, body').addClass('bgFixed');
-		$('.layerBG').fadeIn(400).removeClass('displayN');
+		/*$('html, body').addClass('bgFixed');*/
+		/*$('body').css({'height': '100%', 'overflow': 'hidden'});*/
+		$('html, body').on('scroll touchmove mousewheel', function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			return false;
+		});
+		$('.layerBG').fadeIn(400);
+		closeLayer();
 	});
 	$('.closeBtn').on('click', function(){
 		$('.imgBox').empty();
-		$('html, body').removeClass('bgFixed');
-		$('html, body').css({'height':'auto', 'overflow': 'auto; '});
+		/*$('html, body').removeClass('bgFixed');*/
+		/*$('html, body').css({'height':'auto', 'overflow': 'auto'});*/
+		$('html, body').off('scroll touchmove mousewheel');
 		$('.layerBG').fadeOut(600);
 	});
-	/*
-			$('#fullpage').fullpage({
+	
+/*			$('#fullpage').fullpage({
 				//options here
-				autoScrolling:true,
-				scrollHorizontally: true
-			});
+				licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+	autoScrolling:true,
+	scrollHorizontally: true
+			});*/
 
-			//methods
-			$.fn.fullpage.setAllowScrolling(false);*/
   /*  휠 부분  */
-  var scrollEvent = false;
+/*  var scrollEvent = false;
   var count = 0;
   
   $('html, body').on('mousewheel', function(c){
@@ -256,17 +265,26 @@ $(function(){
       console.log(count);
       scrollEvent = true;
       count++;
-      if(count == 4){
-        $('svg').addClass('reverse');
-      }
       $('html, body').stop().animate({scrollTop: sb * count}, {
         duration: 600, complete: function(){
           scrollEvent = false;
         }
       })
     }
-  })
+  });*/
 });
+		function closeLayer(){
+		//레이어 닫기
+			var checkBoxBG = $('.layerBG');
+			$('.layerBG').on('click', function(e) {
+				if (checkBoxBG.has(e.target).length === 0) {
+					checkBoxBG.fadeOut(600);
+					/*$('body').css({'height': 'auto','overflow-y': 'auto'});*/
+					$('html, body').off('scroll touchmove mousewheel');
+					/*$('html, body').removeClass('bgFixed');*/
+				}
+			});
+}
 	</script>
 </body>
 
