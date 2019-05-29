@@ -225,55 +225,39 @@
 			
 			var scrollHeight = 0;
       $('.graphic img').on('click', function() {
+				scrollHeight = $(window).scrollTop(); // 열렸을떄 scrollTop 체크 (var 쓰지않기. 팝업오픈했을때만사용하기위한 변수)
+				var thisTop = $('.imgSection').offset().top; 
+				var onTop = thisTop - scrollHeight;
+				console.log(onTop);
+				//$(window).scrollTop(onTop);
+				$('body').addClass('bgFixed');
+				$('.imgSection').css({"position" : "fixed", 'top': onTop});
 				
-				scrollHeight = $("body").scrollTop(); // 열렸을떄 scrollTop 체크 (var 쓰지않기. 팝업오픈했을때만사용하기위한 변수)
-
-			console.log(scrollHeight);	
         var imgTag = $(this).parent().html();
         $('.imgBox').append(imgTag);
-				
-				$('body').addClass('bgFixed');
-				
-				$('.imgSection').css({'position': 'fixed', 'top': -scrollHeight});
         $('.layerBG').fadeIn(400);
-        
 				
-      var checkBoxBG = $('.layerBG');
-      $('.layerBG').on('click', function(e) {
-        if (checkBoxBG.has(e.target).length === 0) {
-          checkBoxBG.fadeOut(600);
-						$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
-						$(".imgSection").css({"position" : "relative", "top" : "0"});
-						$("body").scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
-          /*$('body').css({'height': 'auto','overflow-y': 'auto'});*/
-          // $('html, body').off('scroll touchmove mousewheel');
-          /*$('html, body').removeClass('bgFixed');*/
-        }
-      });
+				closeLayer(scrollHeight);
 				
       });
       $('.closeBtn').on('click', function() {
 					$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
 					$(".imgSection").css({"position" : "relative", "top" : "0"});
-					$("body").scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
+					$(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
         $('.imgBox').empty();
         $('.layerBG').fadeOut(600);
       });
     });
 
-    function closeLayer() {
+    function closeLayer(scrollHeight) {
       //레이어 닫기
-			console.log(scrollHeight);
       var checkBoxBG = $('.layerBG');
       $('.layerBG').on('click', function(e) {
         if (checkBoxBG.has(e.target).length === 0) {
-          checkBoxBG.fadeOut(600);
 						$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
 						$(".imgSection").css({"position" : "relative", "top" : "0"});
-						$("body").scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
-          /*$('body').css({'height': 'auto','overflow-y': 'auto'});*/
-          // $('html, body').off('scroll touchmove mousewheel');
-          /*$('html, body').removeClass('bgFixed');*/
+						$(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
+          checkBoxBG.fadeOut(600);
         }
       });
     }
