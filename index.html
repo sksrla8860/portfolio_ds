@@ -4,9 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:image" content="img/main_img.jpeg">
+  <meta property="og:title" content="정동섭의 포트폴리오입니다.">
   <title>포트폴리오의 정동섭입니다.</title>
 
-  <link rel="shortcut icon" href="favicon.png" />
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
   <link href="css/reset.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/scroll_trigger.css" rel="stylesheet" />
@@ -15,6 +17,7 @@
   <script src="script/jquery-3.4.0.js"></script>
   <!--<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>-->
   <script src="script/script.js"></script>
+  <script src="script/jquery.mousewheel.js"></script>
   <!--<script src="/fullPage.js-master/dist/fullpage.js"></script>-->
   <!--<script src="/script/custom.js"></script>-->
 </head>
@@ -37,7 +40,7 @@
     </section>
     <!--첫번째-->
     <!--두번째-->
-    <section class="block section">
+    <section class="block section chartSection">
       <div class="block">
         <h1 data-scroll="toggle(.fromTopIn, .fromTopOut)">Ability</h1>
         <h2 data-scroll="toggle(.fromBottomIn, .fromBottomOut)" class="clearfix">
@@ -133,7 +136,7 @@
     </section>
     <!--세번째-->
     <!--네번째-->
-    <section class="block section">
+    <section class="block section imgSection">
       <div class="block">
         <h1 data-scroll="toggle(.fromRightIn, .fromRightOut)">Graphic Design</h1>
         <h2 data-scroll="toggle(.fromLeftIn, .fromLeftOut)">Graphics Design Using Photoshop, Illustratior</h2>
@@ -196,92 +199,80 @@
     $(function() {
       var ww = $(window).width();
       var wh = $(window).height();
-      if (ww >= 480) {
-        $('.chart').easyPieChart({
-          size: 130,
-          barColor: '#FF3636',
-          scaleColor: false,
-          lineWidth: 10,
-          trackColor: '#fff'
-        });
-      } else {
-        $('.chart').easyPieChart({
-          size: 70,
-          barColor: '#FF3636',
-          scaleColor: false,
-          lineWidth: 5,
-          trackColor: '#fff'
-        });
-      }
-
+			$(window).on('scroll', function(){
+				if($(window).scrollTop() > $('.chartSection').offset().top - 200){
+					if (ww >= 480) {
+						$('.chart').easyPieChart({
+							size: 130,
+							barColor: '#FF3636',
+							scaleColor: false,
+							lineWidth: 10,
+							trackColor: '#fff'
+						});
+					} else {
+						$('.chart').easyPieChart({
+							size: 70,
+							barColor: '#FF3636',
+							scaleColor: false,
+							lineWidth: 5,
+							trackColor: '#fff'
+						});
+					}
+				}	
+			});
+			
+			
+			
+			var scrollHeight = 0;
       $('.graphic img').on('click', function() {
+				
+				scrollHeight = $("body").scrollTop(); // 열렸을떄 scrollTop 체크 (var 쓰지않기. 팝업오픈했을때만사용하기위한 변수)
+
+			console.log(scrollHeight);	
         var imgTag = $(this).parent().html();
         $('.imgBox').append(imgTag);
-        /*$('html, body').addClass('bgFixed');*/
-        /*$('body').css({'height': '100%', 'overflow': 'hidden'});*/
-        $('.layerBG').on('scroll touchmove mousewheel', function(event) {
-          console.log('333');
-          event.preventDefault();
-          event.stopPropagation();
-          return false;
-        });
+				
+				$('body').addClass('bgFixed');
+				
+				$('.imgSection').css({'position': 'fixed', 'top': -scrollHeight});
         $('.layerBG').fadeIn(400);
-        closeLayer();
-      });
-      $('.closeBtn').on('click', function() {
-        $('.imgBox').empty();
-        /*$('html, body').removeClass('bgFixed');*/
-        /*$('html, body').css({'height':'auto', 'overflow': 'auto'});*/
-        $('html, body').off('scroll touchmove mousewheel');
-        $('.layerBG').fadeOut(600);
-      });
-
-      /*			$('#fullpage').fullpage({
-      				//options here
-      				licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
-      	autoScrolling:true,
-      	scrollHorizontally: true
-      			});*/
-
-      /*  휠 부분  */
-      /*  var scrollEvent = false;
-        var count = 0;
         
-        $('html, body').on('mousewheel', function(c){
-          c.preventDefault();
-          var m = c.originalEvent.wheelDelta;
-          var sb = $('.sectionF').height();
-          
-          if(m > 0 && scrollEvent == false && count >= 1){
-            console.log(count);
-            scrollEvent = true;
-            count--;
-            $('html, body').stop().animate({scrollTop: sb*count}, {
-              duration: 600, complete: function(){
-                scrollEvent = false;
-              }
-            })
-          }else if(m < 0 && scrollEvent == false && count < 4){
-            console.log(count);
-            scrollEvent = true;
-            count++;
-            $('html, body').stop().animate({scrollTop: sb * count}, {
-              duration: 600, complete: function(){
-                scrollEvent = false;
-              }
-            })
-          }
-        });*/
-    });
-
-    function closeLayer() {
-      //레이어 닫기
+				
       var checkBoxBG = $('.layerBG');
       $('.layerBG').on('click', function(e) {
         if (checkBoxBG.has(e.target).length === 0) {
           checkBoxBG.fadeOut(600);
+						$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
+						$(".imgSection").css({"position" : "relative", "top" : "0"});
+						$("body").scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
           /*$('body').css({'height': 'auto','overflow-y': 'auto'});*/
-          $('html, body').off('scroll touchmove mousewheel');
+          // $('html, body').off('scroll touchmove mousewheel');
+          /*$('html, body').removeClass('bgFixed');*/
+        }
+      });
+				
+      });
+      $('.closeBtn').on('click', function() {
+					$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
+					$(".imgSection").css({"position" : "relative", "top" : "0"});
+					$("body").scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
+        $('.imgBox').empty();
+        $('.layerBG').fadeOut(600);
+      });
+    });
+
+    function closeLayer() {
+      //레이어 닫기
+			console.log(scrollHeight);
+      var checkBoxBG = $('.layerBG');
+      $('.layerBG').on('click', function(e) {
+        if (checkBoxBG.has(e.target).length === 0) {
+          checkBoxBG.fadeOut(600);
+						$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
+						$(".imgSection").css({"position" : "relative", "top" : "0"});
+						$("body").scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
+          /*$('body').css({'height': 'auto','overflow-y': 'auto'});*/
+          // $('html, body').off('scroll touchmove mousewheel');
           /*$('html, body').removeClass('bgFixed');*/
         }
       });
