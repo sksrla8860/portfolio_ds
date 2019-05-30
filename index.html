@@ -16,9 +16,9 @@
 
   <script src="script/jquery-3.4.0.js"></script>
   <!--<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>-->
+  <script src="/fullPage.js-master/dist/fullpage.js"></script>
   <script src="script/script.js"></script>
   <script src="script/jquery.mousewheel.js"></script>
-  <!--<script src="/fullPage.js-master/dist/fullpage.js"></script>-->
   <!--<script src="/script/custom.js"></script>-->
 </head>
 
@@ -197,6 +197,12 @@
   </svg>
   <script type="text/javascript">
     $(function() {
+				$('#fullpage').fullpage({
+					//options here
+					licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+					scrollBar: true,
+					scrollHorizontally: true
+				});
       var ww = $(window).width();
       var wh = $(window).height();
 			$(window).on('scroll', function(){
@@ -224,6 +230,7 @@
 			
 			
 			var scrollHeight = 0;
+			var thisTop = 0;
       $('.graphic img').on('click', function() {
 				scrollHeight = $(window).scrollTop(); // 열렸을떄 scrollTop 체크 (var 쓰지않기. 팝업오픈했을때만사용하기위한 변수)
 				var thisTop = $('.imgSection').offset().top; 
@@ -231,21 +238,21 @@
 				console.log(onTop);
 				//$(window).scrollTop(onTop);
 				$('body').addClass('bgFixed');
-				$('.imgSection').css({"position" : "fixed", 'top': onTop});
+				$('.imgSection').css({"position" : "fixed", 'top': '0'});
 				
         var imgTag = $(this).parent().html();
         $('.imgBox').append(imgTag);
         $('.layerBG').fadeIn(400);
 				
-				closeLayer(scrollHeight);
+				closeLayer(thisTop);
 				
-      });
-      $('.closeBtn').on('click', function() {
-					$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
-					$(".imgSection").css({"position" : "relative", "top" : "0"});
-					$(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
-        $('.imgBox').empty();
-        $('.layerBG').fadeOut(600);
+				$('.closeBtn').on('click', function() {
+						$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
+						$(".imgSection").css({"position" : "relative", "top" : "0"});
+						$(window).scrollTop(thisTop); //현재 스크롤된값=보이는화면 
+					$('.imgBox').empty();
+					$('.layerBG').fadeOut(600);
+				});
       });
     });
 
@@ -257,6 +264,7 @@
 						$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
 						$(".imgSection").css({"position" : "relative", "top" : "0"});
 						$(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
+						$('.imgBox').empty();
           checkBoxBG.fadeOut(600);
         }
       });
