@@ -257,7 +257,7 @@
 						$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
 						$('body').off('scroll touchmove mousewheel');
 						$(".imgSection").css({"position" : "relative", "top" : "0"});
-						$(window).scrollTop(thisTop); //현재 스크롤된값=보이는화면 
+						$(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
 					$('.imgBox').empty();
 					$('.layerBG').fadeOut(600);
 				});
