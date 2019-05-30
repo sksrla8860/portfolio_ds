@@ -200,8 +200,8 @@
 				$('#fullpage').fullpage({
 					//options here
 					licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
-					scrollBar: true,
-					scrollHorizontally: true
+		easingcss3: 'ease',
+					scrollBar: true
 				});
       var ww = $(window).width();
       var wh = $(window).height();
@@ -232,22 +232,30 @@
 			var scrollHeight = 0;
 			var thisTop = 0;
       $('.graphic img').on('click', function() {
+				
 				scrollHeight = $(window).scrollTop(); // 열렸을떄 scrollTop 체크 (var 쓰지않기. 팝업오픈했을때만사용하기위한 변수)
 				var thisTop = $('.imgSection').offset().top; 
 				var onTop = thisTop - scrollHeight;
 				console.log(onTop);
 				//$(window).scrollTop(onTop);
 				$('body').addClass('bgFixed');
+				$('body').on('scroll touchmove mousewheel', function(event){
+					event.preventDefault();
+    			event.stopPropagation();
+					
+					return false; 
+				});
 				$('.imgSection').css({"position" : "fixed", 'top': '0'});
 				
         var imgTag = $(this).parent().html();
         $('.imgBox').append(imgTag);
         $('.layerBG').fadeIn(400);
-				
+				// $('.imgBox').off('scroll touchmove mousewheel');
 				closeLayer(thisTop);
 				
 				$('.closeBtn').on('click', function() {
 						$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
+						$('body').off('scroll touchmove mousewheel');
 						$(".imgSection").css({"position" : "relative", "top" : "0"});
 						$(window).scrollTop(thisTop); //현재 스크롤된값=보이는화면 
 					$('.imgBox').empty();
@@ -262,6 +270,7 @@
       $('.layerBG').on('click', function(e) {
         if (checkBoxBG.has(e.target).length === 0) {
 						$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
+						$('body').off('scroll touchmove mousewheel');
 						$(".imgSection").css({"position" : "relative", "top" : "0"});
 						$(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
 						$('.imgBox').empty();
