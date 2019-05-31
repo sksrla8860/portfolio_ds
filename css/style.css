@@ -82,7 +82,7 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 	.hoverEvent{width: 70% !important; float: none !important; margin: 0 auto; }
 	.hoverEvent > figure{height: 0 !important; padding: 30% 0; }
 	/*.article {padding-left: 10%;}*/
-	.layerPopup{width: 95%; height: 90%;top: 5%; background-color: #fff; left: 2.5%; margin: 0; }
+	.layerPopup{width: 95%; height: 90%;top: 5%; background-color: #fff; left: 2.5%; margin: 0; padding: 3%; }
 	.article {margin-bottom: 20px;}
 }
 
@@ -93,4 +93,5 @@ html, body{font-size: 8px; }
 	.skills .bar .chart{line-height: 50px;}
 	.skills .bar canvas {top: 50%; margin-top: -35px; left: 50%; margin-left: -35px; }
 	.article {margin-bottom: 10px;}
+	.layerPopup{padding: 5%; }
 }
