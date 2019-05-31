@@ -252,15 +252,6 @@
         $('.layerBG').fadeIn(400);
 				// $('.imgBox').off('scroll touchmove mousewheel');
 				closeLayer(thisTop);
-				
-				$('.closeBtn').on('click', function() {
-						$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
-						$('body').off('scroll touchmove mousewheel');
-						$(".imgSection").css({"position" : "relative", "top" : "0"});
-						$(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
-					$('.imgBox').empty();
-					$('.layerBG').fadeOut(600);
-				});
       });
     });
 
@@ -277,6 +268,15 @@
           checkBoxBG.fadeOut(600);
         }
       });
+				
+				$('.closeBtn').on('click', function() {
+						$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
+						$('body').off('scroll touchmove mousewheel');
+						$(".imgSection").css({"position" : "relative", "top" : "0"});
+						$(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
+					$('.imgBox').empty();
+					$('.layerBG').fadeOut(600);
+				});
     }
   </script>
 </body>
