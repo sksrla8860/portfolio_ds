@@ -253,7 +253,25 @@
         $('.imgBox').append(imgTag);
         $('.layerBG').fadeIn(400);
 				// $('.imgBox').off('scroll touchmove mousewheel');
-				closeLayer(thisTop);
+		      var checkBoxBG = $('.layerBG');
+		      $('.layerBG').on('click', function(e) {
+			if (checkBoxBG.has(e.target).length === 0) {
+								$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
+								$('body').off('scroll touchmove mousewheel');
+								$(".imgSection").css({"position" : "relative", "top" : "0"});
+								$(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
+								$('.imgBox').empty();
+			  checkBoxBG.fadeOut(600);
+			}
+		      });
+		      $('.closeBtn').on('click', function() {
+			      $("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
+			      $('body').off('scroll touchmove mousewheel');
+			      $(".imgSection").css({"position" : "relative", "top" : "0"});
+			      $(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
+			  $('.imgBox').empty();
+			  $('.layerBG').fadeOut(600);
+		      });
       });
     });
 
