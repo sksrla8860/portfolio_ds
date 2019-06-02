@@ -199,79 +199,64 @@
   </svg>
   <script type="text/javascript">
     $(function() {
-				$('#fullpage').fullpage({
-					//options here
-					licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
-		easingcss3: 'ease',
-					scrollBar: true
-				});
+      $('#fullpage').fullpage({
+        //options here
+        licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+        easingcss3: 'ease',
+        scrollBar: true
+      });
       var ww = $(window).width();
       var wh = $(window).height();
-			$(window).on('scroll', function(){
-				if($(window).scrollTop() > $('.chartSection').offset().top - 200){
-					if (ww >= 480) {
-						$('.chart').easyPieChart({
-							size: 130,
-							barColor: '#FF3636',
-							scaleColor: false,
-							lineWidth: 10,
-							trackColor: '#fff'
-						});
-					} else {
-						$('.chart').easyPieChart({
-							size: 70,
-							barColor: '#FF3636',
-							scaleColor: false,
-							lineWidth: 5,
-							trackColor: '#fff'
-						});
-					}
-				}	
-			});
-			
-			
-			
-			var scrollHeight = 0;
-			var thisTop = 0;
+      $(window).on('scroll', function() {
+        if ($(window).scrollTop() > $('.chartSection').offset().top - 200) {
+          if (ww >= 480) {
+            $('.chart').easyPieChart({
+              size: 130,
+              barColor: '#FF3636',
+              scaleColor: false,
+              lineWidth: 10,
+              trackColor: '#fff'
+            });
+          } else {
+            $('.chart').easyPieChart({
+              size: 70,
+              barColor: '#FF3636',
+              scaleColor: false,
+              lineWidth: 5,
+              trackColor: '#fff'
+            });
+          }
+        }
+      });
+
+
+
+      var scrollHeight = 0;
+      var thisTop = 0;
       $('.graphic img').on('click', function() {
-				
-				scrollHeight = $(window).scrollTop(); // 열렸을떄 scrollTop 체크 (var 쓰지않기. 팝업오픈했을때만사용하기위한 변수)
-				var thisTop = $('.imgSection').offset().top; 
-				var onTop = thisTop - scrollHeight;
-				console.log(onTop);
-				//$(window).scrollTop(onTop);
-				$('body').addClass('bgFixed');
-				$('body').on('scroll touchmove mousewheel', function(event){
-					event.preventDefault();
-    			event.stopPropagation();
-					
-					return false; 
-				});
-				$('.imgSection').css({"position" : "fixed", 'top': '0'});
-				
+
+        scrollHeight = $(window).scrollTop(); // 열렸을떄 scrollTop 체크 (var 쓰지않기. 팝업오픈했을때만사용하기위한 변수)
+        var thisTop = $('.imgSection').offset().top;
+        var onTop = thisTop - scrollHeight;
+        console.log(onTop);
+        //$(window).scrollTop(onTop);
+        $('body').addClass('bgFixed');
+        $('body').on('scroll touchmove mousewheel', function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          return false;
+        });
+        $('.imgSection').css({
+          "position": "fixed",
+          'top': '0'
+        });
+
         var imgTag = $(this).parent().html();
         $('.imgBox').append(imgTag);
         $('.layerBG').fadeIn(400);
-				// $('.imgBox').off('scroll touchmove mousewheel');
-		      var checkBoxBG = $('.layerBG');
-		      $('.layerBG').on('click', function(e) {
-			if (checkBoxBG.has(e.target).length === 0) {
-								$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
-								$('body').off('scroll touchmove mousewheel');
-								$(".imgSection").css({"position" : "relative", "top" : "0"});
-								$(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
-								$('.imgBox').empty();
-			  checkBoxBG.fadeOut(600);
-			}
-		      });
-		      $('.closeBtn').on('click', function() {
-			      $("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
-			      $('body').off('scroll touchmove mousewheel');
-			      $(".imgSection").css({"position" : "relative", "top" : "0"});
-			      $(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
-			  $('.imgBox').empty();
-			  $('.layerBG').fadeOut(600);
-		      });
+        // $('.imgBox').off('scroll touchmove mousewheel');
+        closeLayer(thisTop);
       });
     });
 
@@ -280,23 +265,29 @@
       var checkBoxBG = $('.layerBG');
       $('.layerBG').on('click', function(e) {
         if (checkBoxBG.has(e.target).length === 0) {
-						$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
-						$('body').off('scroll touchmove mousewheel');
-						$(".imgSection").css({"position" : "relative", "top" : "0"});
-						$(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
-						$('.imgBox').empty();
+          $("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
+          $('body').off('scroll touchmove mousewheel');
+          $(".imgSection").css({
+            "position": "relative",
+            "top": "0"
+          });
+          $('.imgBox').empty();
           checkBoxBG.fadeOut(600);
+          $(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
         }
       });
-				
-				$('.closeBtn').on('click', function() {
-						$("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
-						$('body').off('scroll touchmove mousewheel');
-						$(".imgSection").css({"position" : "relative", "top" : "0"});
-						$(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
-					$('.imgBox').empty();
-					$('.layerBG').fadeOut(600);
-				});
+
+      $('.closeBtn').on('click', function() {
+        $("body").removeClass("bgFixed"); //overflow-hidden 해제(스크롤 해제)
+        $('body').off('scroll touchmove mousewheel');
+        $(".imgSection").css({
+          "position": "relative",
+          "top": "0"
+        });
+        $('.imgBox').empty();
+        $('.layerBG').fadeOut(600);
+        $(window).scrollTop(scrollHeight); //현재 스크롤된값=보이는화면 
+      });
     }
   </script>
 </body>
