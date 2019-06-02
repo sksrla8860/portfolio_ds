@@ -15,7 +15,7 @@ body {background: #06416B;color: #d7e7f3;font-family: 'BMHANNAAir';line-height: 
 	50% {color: rgba(0, 0, 0.0.1);}
 	100% {content: "Publisher";}
 }
-h1 {width: 98%; font-size: 10rem;font-weight: 200;letter-spacing: 1px;text-transform: uppercase;line-height: 1.2; margin: 0 auto; margin-bottom: 20px;}
+h1 {width: 95%; font-size: 10rem;font-weight: 200;letter-spacing: 1px;text-transform: uppercase;line-height: 1.2; margin: 0 auto; margin-bottom: 20px;}
 h2 {font-weight: 300;font-size: 3.5rem;line-height: 1.5; color: #779dba;margin: 0 auto; margin-bottom: 50px; }
 h3 {font-weight: 500;font-size: 2rem;line-height: 1.5; color: #d7e7f3;margin: 0 auto;}
 strong{font-size: 2rem;}
@@ -69,6 +69,7 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 	h1 {font-size: 9rem; margin-bottom: 20px;}
 	.graphic > div{padding: 0 15%; }
 	section > div {width: 100%;}
+    section > div > div {width: 100%;}
 	.article2 {display: block; }
 }
 @media screen and (max-width:800px) {
@@ -78,7 +79,7 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 	.graphic > div{padding: 0 10%; }
 	section.block{width: 100%; height: 100vh; padding: 0; }
 	.profile {width: 90%; }
-	.graphic > div{float: left; width: 50%; height: auto; padding: 0 5%; }
+	.graphic > div{width: 100%; height: auto; padding: 0 10%; }
 	.article {margin-bottom: 10px;}
 	.mouseover{display: block !important; }
 	.hoverEvent{width: 70% !important; float: none !important; margin: 0 auto; }
@@ -92,6 +93,7 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 html, body{font-size: 8px; }
 	h1 {width: 98%;font-size: 4.5rem; margin-bottom: 10px;}
 	h2{font-size: 2.5rem; }
+	.skills{width: 50%; margin-bottom: 20px;}
 	.skills .bar .chart{line-height: 50px;}
 	.skills .bar canvas {top: 50%; margin-top: -35px; left: 50%; margin-left: -35px; }
 	.article {margin-bottom: 10px;}
