@@ -80,7 +80,6 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 	.graphic > div{padding: 0 10%; }
 	section.block{width: 100%; height: 100vh; padding: 0; }
 	.profile {width: 90%; }
-	.graphic > div{width: 100%; height: auto; padding: 0 10%; }
 	.article {margin-bottom: 10px;}
 	.mouseover{display: block !important; }
 	.hoverEvent{width: 70% !important; float: none !important; margin: 0 auto; }
@@ -94,6 +93,7 @@ section.block:nth-child(3n) {background: hsl(205, 90%, 22%);}
 html, body{font-size: 8px; }
 	h1 {font-size: 4.5rem; margin-bottom: 10px;}
 	h2{font-size: 2.5rem; }
+	.graphic > div{width: 100%; height: auto; padding: 0 20%; }
 	.skills{width: 50%; margin-bottom: 20px;}
 	.skills .bar .chart{line-height: 50px;}
 	.skills .bar canvas {top: 50%; margin-top: -35px; left: 50%; margin-left: -35px; }
